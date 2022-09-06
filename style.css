@@ -84,12 +84,15 @@ BODY {
   min-height: 400px;
   color: #dddddd;
   font-family: verdana;
+  margin: 0;
 }
 
-/* #gameBoard{
-  display: flex;
-  flex-direction: column;
-} */
+#gameBoard{
+  box-sizing: border-box;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
 
 #computerlbl{
   position: absolute;
@@ -109,6 +112,7 @@ BODY {
   width: 100%;
   margin: auto;
   position: absolute;
+  top: 5px;
 }
 
 #p2-board{
@@ -118,7 +122,7 @@ BODY {
   flex-wrap: wrap;
   width: 100%;
   position: absolute;
-  bottom: 10px;
+  bottom: 5px;
   
 }
 
@@ -127,15 +131,16 @@ BODY {
   box-sizing: border-box;
   min-width: 150px;
   max-width: 150px;
-  height: 214px;
+  height: 209px;
   margin:auto;
-  background-color: white;
-  background-image: url('assets/images/54Deck.png');
-  background-position-x: 0px;
-  background-position-y: center;
-  background-repeat: none;
-  background-position: middle center;
-  border: 1px #555555 solid;
+  background-color: black;
+  background-size: contain;
+  /* background-image: url('assets/images/54Deck.png'); */
+  /* background-position-x: 0px; */
+  /* background-position-y: center; */
+  /* background-repeat: none; */
+  /* background-position: middle center; */
+  /* border: 1px #555555 solid; */
   border-radius: 10px;
   -webkit-box-shadow: 2px 2px 3px 0px #000000;
   box-shadow: 2px 2px 3px 0px #000000;

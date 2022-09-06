@@ -1,21 +1,33 @@
 class Deck {
   constructor() {
-    this.deck = [];
-    this.create();
-    this.shuffle();
+    this.deck;
+    this.deckID;
+    this.remaining;
+    this.init(startDeal)
   }
 
-  create() {
-    this.deck = ["Joker", "Joker"];
-    const suits = ["Hearts", "Clubs", "Diamonds", "Spades"];
-    const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
-
-    suits.forEach((suit) => {
-      values.forEach((value) => {
-        this.deck.push(value + " of " + suit);
-      });
-    });
+  async init(callback){
+    await this.create()
+    callback.bind(this)();
   }
+
+  async create() {
+    // this.deck = ["Joker", "Joker"];
+    // const suits = ["Hearts", "Clubs", "Diamonds", "Spades"];
+    // const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
+
+    // suits.forEach((suit) => {
+    //   values.forEach((value) => {
+    //     this.deck.push(value + " of " + suit);
+    //   });
+    // });
+
+    let response = await fetch('http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1&jokers_enabled=true');
+    let result = await response.json();
+    this.deck = result;
+    this.deckID = result.deck_id;
+    this.remaining = result.remaining;
+}
 
   shuffle() {
     let numberOfCards = this.deck.length;
@@ -27,8 +39,15 @@ class Deck {
     }
   }
 
-  deal() {
-    return this.deck.pop();
+  async deal() {
+    // return this.deck.pop();
+    console.log(this.deckID)
+    // let teststr = `http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=1`;
+    // console.log('TEST: '+teststr);
+    let response = await fetch(`http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=1`);
+    let result = await response.json();
+    this.remaining = result.remaining;
+    return [result.cards[0].code,result.cards[0].image];
   }
 
   isEmpty() {
@@ -44,68 +63,10 @@ class Card {
   constructor(objName, card) {
     console.log(objName);
     console.log(card);
-    this.card = card;
-    const values = {
-      "Ace of Hearts": 1,
-      "2 of Hearts": 2,
-      "3 of Hearts": 3,
-      "4 of Hearts": 4,
-      "5 of Hearts": 5,
-      "6 of Hearts": 6,
-      "7 of Hearts": 7,
-      "8 of Hearts": 8,
-      "9 of Hearts": 9,
-      "10 of Hearts": 10,
-      "Jack of Hearts": 11,
-      "Queen of Hearts": 12,
-      "King of Hearts": 13,
-      "Ace of Diamonds": 1,
-      "2 of Diamonds": 2,
-      "3 of Diamonds": 3,
-      "4 of Diamonds": 4,
-      "5 of Diamonds": 5,
-      "6 of Diamonds": 6,
-      "7 of Diamonds": 7,
-      "8 of Diamonds": 8,
-      "9 of Diamonds": 9,
-      "10 of Diamonds": 10,
-      "Jack of Diamonds": 11,
-      "Queen of Diamonds": 12,
-      "King of Diamonds": 13,
-      "Ace of Clubs": 1,
-      "2 of Clubs": 2,
-      "3 of Clubs": 3,
-      "4 of Clubs": 4,
-      "5 of Clubs": 5,
-      "6 of Clubs": 6,
-      "7 of Clubs": 7,
-      "8 of Clubs": 8,
-      "9 of Clubs": 9,
-      "10 of Clubs": 10,
-      "Jack of Clubs": 11,
-      "Queen of Clubs": 12,
-      "King of Clubs": 13,
-      "Ace of Spades": 1,
-      "2 of Spades": 2,
-      "3 of Spades": 3,
-      "4 of Spades": 4,
-      "5 of Spades": 5,
-      "6 of Spades": 6,
-      "7 of Spades": 7,
-      "8 of Spades": 8,
-      "9 of Spades": 9,
-      "10 of Spades": 10,
-      "Jack of Spades": 11,
-      "Queen of Spades": 12,
-      "King of Spades": 13,
-    };
-    this.value = values[card];
-    this.suit = card.substring(card.indexOf(" of ") + 4);
+    this.card = card[0];
+    this.img = card[1];
     this.placeHolder = document.getElementById(objName);
     this.flipped = false;
-    this.that = objName;
-    var suits = { Hearts: 0, Diamonds: 13, Clubs: 26, Spades: 39 };
-    this.position = suits[this.suit] + this.value;
     this.placeHolder.addEventListener("click", function () {
       switch (objName) {
         case "card1":
@@ -165,37 +126,39 @@ class Card {
         case "card19":
           card19.flip();
           break;
+        case "card20":
+          card20.flip();
+          break;
       }
     });
-  }
+    };
+    
   displayCard(flipped) {
-    console.log(flipped)
     this.placeHolder.classList.add("card");
     this.flipped = flipped;
     if (flipped) {
-      this.placeHolder.style.backgroundPosition = -150 * this.position + "px";
+      this.placeHolder.style.backgroundImage = `url(${this.img})`;
     } else {
-      this.placeHolder.style.backgroundPosition = "0px";
+      this.placeHolder.style.backgroundImage = "url(https://deckofcardsapi.com/static/img/back.png)";
     }
   }
 
   flip() {
     if (this.flipped) {
-      this.placeHolder.style.backgroundPosition = "0px";
+      this.placeHolder.style.backgroundImage = "url(https://deckofcardsapi.com/static/img/back.png)";
       this.flipped = false;
     } else {
-      this.placeHolder.style.backgroundPosition = -150 * this.position + "px";
+      this.placeHolder.style.backgroundImage = `url(${this.img})`;
       this.flipped = true;
     }
   }
 }
 
+let card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19, card20;
 const hand = new Deck();
-for(x=1;x<21;x++){
-    eval('let card'+x+';')
-}
 
-async function deal() {
+
+async function startDeal() {
   card1 = new Card("card1", await hand.deal());
   card2 = new Card("card2", await hand.deal());
   card3 = new Card("card3", await hand.deal());
@@ -217,26 +180,26 @@ async function deal() {
   card19 = new Card("card19", await hand.deal());
   card20 = new Card("card20", await hand.deal());
 
-  await card1.displayCard(false);
-  await card2.displayCard(false);
-  await card3.displayCard(false);
-  await card4.displayCard(false);
-  await card5.displayCard(false);
-  await card6.displayCard(false);
-  await card7.displayCard(false);
-  await card8.displayCard(false);
-  await card9.displayCard(false);
-  await card10.displayCard(false);
-  await card11.displayCard(false);
-  await card12.displayCard(false);
-  await card13.displayCard(false);
-  await card14.displayCard(false);
-  await card15.displayCard(false);
-  await card16.displayCard(false);
-  await card17.displayCard(false);
-  await card18.displayCard(false);
-  await card19.displayCard(false);
-  await card20.displayCard(false);
+  card1.displayCard(false);
+  card2.displayCard(false);
+  card3.displayCard(false);
+  card4.displayCard(false);
+  card5.displayCard(false);
+  card6.displayCard(false);
+  card7.displayCard(false);
+  card8.displayCard(false);
+  card9.displayCard(false);
+  card10.displayCard(false);
+  card11.displayCard(false);
+  card12.displayCard(false);
+  card13.displayCard(false);
+  card14.displayCard(false);
+  card15.displayCard(false);
+  card16.displayCard(false);
+  card17.displayCard(false);
+  card18.displayCard(false);
+  card19.displayCard(false);
+  card20.displayCard(false);
   //     card4.displayCard('card4',true);
   //     card5.displayCard('card5',true);
   //     card6.displayCard('card6',true);
@@ -246,5 +209,3 @@ async function deal() {
   //     discarded.displayCard('discarded',false);
   //     toDraw.displayCard('toDraw',false);
 }
-
-deal();
