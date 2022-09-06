@@ -66,6 +66,7 @@ class Card {
     this.card = card[0];
     this.img = card[1];
     this.placeHolder = document.getElementById(objName);
+    $(`#${objName}`).draggable();
     this.flipped = false;
     this.placeHolder.addEventListener("click", function () {
       switch (objName) {
@@ -135,6 +136,7 @@ class Card {
     
   displayCard(flipped) {
     this.placeHolder.classList.add("card");
+    this.placeHolder.classList.add("ui-widget-content");
     this.flipped = flipped;
     if (flipped) {
       this.placeHolder.style.backgroundImage = `url(${this.img})`;
@@ -209,3 +211,4 @@ async function startDeal() {
   //     discarded.displayCard('discarded',false);
   //     toDraw.displayCard('toDraw',false);
 }
+$('#card1').draggable();
