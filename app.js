@@ -3,12 +3,12 @@ class Deck {
     this.deck;
     this.deckID;
     this.remaining;
-    this.init(startDeal)
+    this.init(startDeal);
   }
 
-  async init(callback){
-    await this.create()
-    callback.bind(this)();
+  async init(callback) {
+    await this.create();
+    callback();
   }
 
   async create() {
@@ -22,12 +22,14 @@ class Deck {
     //   });
     // });
 
-    let response = await fetch('http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1&jokers_enabled=true');
+    let response = await fetch(
+      "http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+    );
     let result = await response.json();
     this.deck = result;
     this.deckID = result.deck_id;
     this.remaining = result.remaining;
-}
+  }
 
   shuffle() {
     let numberOfCards = this.deck.length;
@@ -41,13 +43,15 @@ class Deck {
 
   async deal() {
     // return this.deck.pop();
-    console.log(this.deckID)
+    console.log(this.deckID);
     // let teststr = `http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=1`;
     // console.log('TEST: '+teststr);
-    let response = await fetch(`http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=1`);
+    let response = await fetch(
+      `http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=1`
+    );
     let result = await response.json();
     this.remaining = result.remaining;
-    return [result.cards[0].code,result.cards[0].image];
+    return [result.cards[0].code, result.cards[0].image];
   }
 
   isEmpty() {
@@ -56,6 +60,13 @@ class Deck {
 
   length() {
     return this.deck.length;
+  }
+
+  drawDeck(card) {
+    console.log(card);
+    eval(`${card}.flip();`);
+    let obj = document.getElementById(card);
+    obj.style.left += "200px";
   }
 }
 
@@ -130,10 +141,12 @@ class Card {
         case "card20":
           card20.flip();
           break;
+        default:
+          hand.drawDeck(objName);
       }
     });
-    };
-    
+  }
+
   displayCard(flipped) {
     this.placeHolder.classList.add("card");
     this.placeHolder.classList.add("ui-widget-content");
@@ -141,13 +154,28 @@ class Card {
     if (flipped) {
       this.placeHolder.style.backgroundImage = `url(${this.img})`;
     } else {
-      this.placeHolder.style.backgroundImage = "url(https://deckofcardsapi.com/static/img/back.png)";
+      this.placeHolder.style.backgroundImage =
+        "url(https://deckofcardsapi.com/static/img/back.png)";
     }
+  }
+
+  addToDeck() {
+    this.placeHolder.classList.add("card");
+    this.placeHolder.classList.add("ui-widget-content");
+    this.placeHolder.style.backgroundImage =
+      "url(https://deckofcardsapi.com/static/img/back.png)";
+    this.placeHolder.style.bottom = positionY + 3 + "px";
+    this.placeHolder.style.right = positionX + 3 + "px";
+    positionY = positionY + 3;
+    positionX += 3;
+    console.log(this.placeHolder.style.bottom + ":" + positionY + " Y");
+    console.log(this.placeHolder.style.right + ":" + positionX + " X");
   }
 
   flip() {
     if (this.flipped) {
-      this.placeHolder.style.backgroundImage = "url(https://deckofcardsapi.com/static/img/back.png)";
+      this.placeHolder.style.backgroundImage =
+        "url(https://deckofcardsapi.com/static/img/back.png)";
       this.flipped = false;
     } else {
       this.placeHolder.style.backgroundImage = `url(${this.img})`;
@@ -156,9 +184,14 @@ class Card {
   }
 }
 
-let card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19, card20;
-const hand = new Deck();
+for (x = 1; x < 53; x++) {
+  eval("var card" + x);
+}
 
+let positionX = 0;
+let positionY = 0;
+
+const hand = new Deck();
 
 async function startDeal() {
   card1 = new Card("card1", await hand.deal());
@@ -181,6 +214,38 @@ async function startDeal() {
   card18 = new Card("card18", await hand.deal());
   card19 = new Card("card19", await hand.deal());
   card20 = new Card("card20", await hand.deal());
+  card21 = new Card("card21", await hand.deal());
+  card22 = new Card("card22", await hand.deal());
+  card23 = new Card("card23", await hand.deal());
+  card24 = new Card("card24", await hand.deal());
+  card25 = new Card("card25", await hand.deal());
+  card26 = new Card("card26", await hand.deal());
+  card27 = new Card("card27", await hand.deal());
+  card28 = new Card("card28", await hand.deal());
+  card29 = new Card("card29", await hand.deal());
+  card30 = new Card("card30", await hand.deal());
+  card31 = new Card("card31", await hand.deal());
+  card32 = new Card("card32", await hand.deal());
+  card33 = new Card("card33", await hand.deal());
+  card34 = new Card("card34", await hand.deal());
+  card35 = new Card("card35", await hand.deal());
+  card36 = new Card("card36", await hand.deal());
+  card37 = new Card("card37", await hand.deal());
+  card38 = new Card("card38", await hand.deal());
+  card39 = new Card("card39", await hand.deal());
+  card40 = new Card("card40", await hand.deal());
+  card41 = new Card("card41", await hand.deal());
+  card42 = new Card("card42", await hand.deal());
+  card43 = new Card("card43", await hand.deal());
+  card44 = new Card("card44", await hand.deal());
+  card45 = new Card("card45", await hand.deal());
+  card46 = new Card("card46", await hand.deal());
+  card47 = new Card("card47", await hand.deal());
+  card48 = new Card("card48", await hand.deal());
+  card49 = new Card("card49", await hand.deal());
+  card50 = new Card("card50", await hand.deal());
+  card51 = new Card("card51", await hand.deal());
+  card52 = new Card("card52", await hand.deal());
 
   card1.displayCard(false);
   card2.displayCard(false);
@@ -202,6 +267,39 @@ async function startDeal() {
   card18.displayCard(false);
   card19.displayCard(false);
   card20.displayCard(false);
+  card21.addToDeck();
+  card22.addToDeck();
+  card23.addToDeck();
+  card24.addToDeck();
+  card25.addToDeck();
+  card26.addToDeck();
+  card27.addToDeck();
+  card28.addToDeck();
+  card29.addToDeck();
+  card30.addToDeck();
+  card31.addToDeck();
+  card32.addToDeck();
+  card33.addToDeck();
+  card34.addToDeck();
+  card35.addToDeck();
+  card36.addToDeck();
+  card37.addToDeck();
+  card38.addToDeck();
+  card39.addToDeck();
+  card40.addToDeck();
+  card41.addToDeck();
+  card42.addToDeck();
+  card43.addToDeck();
+  card44.addToDeck();
+  card45.addToDeck();
+  card46.addToDeck();
+  card47.addToDeck();
+  card48.addToDeck();
+  card49.addToDeck();
+  card50.addToDeck();
+  card51.addToDeck();
+  card52.addToDeck();
+
   //     card4.displayCard('card4',true);
   //     card5.displayCard('card5',true);
   //     card6.displayCard('card6',true);
@@ -211,4 +309,3 @@ async function startDeal() {
   //     discarded.displayCard('discarded',false);
   //     toDraw.displayCard('toDraw',false);
 }
-$('#card1').draggable();

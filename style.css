@@ -87,24 +87,24 @@ BODY {
   margin: 0;
 }
 
-#gameBoard{
+#gameBoard {
   box-sizing: border-box;
   position: relative;
   height: 100vh;
   width: 100%;
 }
 
-#computerlbl{
+#computerlbl {
   position: absolute;
   bottom: -60px;
 }
 
-#playerlbl{
+#playerlbl {
   position: absolute;
   top: -60px;
 }
 
-#p1-board{
+#p1-board {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -115,7 +115,7 @@ BODY {
   top: 5px;
 }
 
-#p2-board{
+#p2-board {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -123,16 +123,15 @@ BODY {
   width: 100%;
   position: absolute;
   bottom: 5px;
-  
 }
 
 .card {
-  display:block;
+  display: block;
   box-sizing: border-box;
   min-width: 150px;
   max-width: 150px;
   height: 209px;
-  margin:auto;
+  margin: auto;
   background-color: black;
   background-size: contain;
   /* background-image: url('assets/images/54Deck.png'); */
@@ -144,6 +143,7 @@ BODY {
   border-radius: 10px;
   -webkit-box-shadow: 2px 2px 3px 0px #000000;
   box-shadow: 2px 2px 3px 0px #000000;
+  position:absolute;
 }
 
 HR {
@@ -151,6 +151,15 @@ HR {
   display: block;
   width: 1;
   size: 500;
+}
+
+#remainingCards {
+  position: relative;
+  background-color: transparent;
+  width: 150px;
+  height: 209px;
+  left: 50%;
+  top: 40%;
 }
 
 /* BUTTON {
