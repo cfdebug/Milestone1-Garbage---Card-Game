@@ -149,7 +149,7 @@ class Card {
 
   displayCard(flipped) {
     this.placeHolder.classList.add("card");
-    this.placeHolder.classList.add("ui-widget-content");
+    this.placeHolder.classList.add("ui-draggable");
     this.flipped = flipped;
     if (flipped) {
       this.placeHolder.style.backgroundImage = `url(${this.img})`;
@@ -161,13 +161,14 @@ class Card {
 
   addToDeck() {
     this.placeHolder.classList.add("card");
-    this.placeHolder.classList.add("ui-widget-content");
+    this.placeHolder.classList.add("ui-draggable");
     this.placeHolder.style.backgroundImage =
       "url(https://deckofcardsapi.com/static/img/back.png)";
-    this.placeHolder.style.bottom = positionY + 3 + "px";
-    this.placeHolder.style.right = positionX + 3 + "px";
-    positionY = positionY + 3;
-    positionX += 3;
+    this.placeHolder.style.position = "absolute";
+    this.placeHolder.style.bottom = positionY + .25 + "px";
+    this.placeHolder.style.right = positionX + .10 + "px";
+    positionY = positionY + .25;
+    positionX += .10;
     console.log(this.placeHolder.style.bottom + ":" + positionY + " Y");
     console.log(this.placeHolder.style.right + ":" + positionX + " X");
   }

@@ -134,23 +134,9 @@ BODY {
   margin: auto;
   background-color: black;
   background-size: contain;
-  /* background-image: url('assets/images/54Deck.png'); */
-  /* background-position-x: 0px; */
-  /* background-position-y: center; */
-  /* background-repeat: none; */
-  /* background-position: middle center; */
-  /* border: 1px #555555 solid; */
   border-radius: 10px;
-  -webkit-box-shadow: 2px 2px 3px 0px #000000;
-  box-shadow: 2px 2px 3px 0px #000000;
+  box-shadow: 0px 0px 2px 0px darkgray;
   position:absolute;
-}
-
-HR {
-  margin-top: 12px;
-  display: block;
-  width: 1;
-  size: 500;
 }
 
 #remainingCards {
@@ -158,8 +144,14 @@ HR {
   background-color: transparent;
   width: 150px;
   height: 209px;
-  left: 50%;
+  left: 46%;
   top: 40%;
+}
+
+#cardlbl {
+  justify-content: center;
+  text-align: center;
+  
 }
 
 /* BUTTON {
