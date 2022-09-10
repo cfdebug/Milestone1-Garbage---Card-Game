@@ -4,6 +4,9 @@ function handleCardDrop( event, ui ) {
     let slotNumber = $(this).data( 'number' );
     let cardNumber = ui.draggable.data( 'value' );
     let currCard = $(this)[0].firstElementChild;
+
+    console.log(slotNumber);
+    console.log(cardNumber);
     // If the card was dropped to the correct slot,
     // change the card colour, position it directly
     // on top of the slot, and prevent it being dragged
@@ -23,6 +26,7 @@ function handleCardDrop( event, ui ) {
         ui.draggable.addClass( 'correct' );
         ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
         ui.draggable.draggable( 'option', 'revert', false ); 
+        currCard.style.bottom = '300px';
         correctCards++;
     }
     
@@ -49,3 +53,18 @@ function handleCardDrop( event, ui ) {
         correctCards--;
     }
   }
+
+  function handleDiscard( event, ui) {
+    console.log(ui.draggable)
+    let currCard = $(this)[0].firstElementChild;
+    console.log(currCard);
+    if(currCard != null){
+    currCard.draggable('disable');
+    ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+    ui.draggable.draggable( 'option', 'revert', false );
+  }else{   
+  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+  ui.draggable.draggable( 'option', 'revert', false );
+
+  }
+}

@@ -1,5 +1,5 @@
 class Card {
-    constructor(objName, card) {
+    constructor(objName, card, board) {
       if(card[0] == 'ACE'){
         this.card = 1;
       }else if(card[0] == 'JACK'){
@@ -13,12 +13,29 @@ class Card {
       };
       this.img = card[1];
       this.placeHolder = document.getElementById(objName);
+
+      if(board == 1){
       $(`#${objName}`).data('value', this.card).draggable({
         containment: '#gameBoard',
         stack: '#p1-board div',
         cursor: 'move',
-        revert: false
+        revert: true
       } );
+      }else if (board == 2){
+        $(`#${objName}`).data('value', this.card).draggable({
+          containment: '#gameBoard',
+          stack: '#p2-board div',
+          cursor: 'move',
+          revert: true
+        } );
+      }else{
+        $(`#${objName}`).data('value', this.card).draggable({
+          containment: '#gameBoard',
+          stack: '#p1-board div,#p2-board div,#remainingCards div',
+          cursor: 'move',
+          revert: true
+        } );
+      }
       this.flipped = false;
       this.placeHolder.addEventListener("click", function () {
         switch (objName) {
@@ -90,7 +107,6 @@ class Card {
   
     displayCard(flipped) {
       this.placeHolder.classList.add("card");
-      this.placeHolder.classList.add("ui-draggable");
       this.flipped = flipped;
       if (flipped) {
         this.placeHolder.style.backgroundImage = `url(${this.img})`;
@@ -102,7 +118,6 @@ class Card {
   
     addToDeck() {
       this.placeHolder.classList.add("card");
-      this.placeHolder.classList.add("ui-draggable");
       this.placeHolder.style.backgroundImage =
         "url(https://deckofcardsapi.com/static/img/back.png)";
       this.placeHolder.style.position = "absolute";

@@ -5,7 +5,7 @@ for (x = 1; x < 53; x++) {
 var words = [ 'ACE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 'TEN' ];
 for ( var i=1; i<=10; i++ ) {
   $('<div id=drop'+(i+10)+'>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#p2-board' ).droppable( {
-    accept: '#p2-board div',
+    accept: '#p2-board div, #remainingCards div',
     hoverClass: 'hovered',
     drop: handleCardDrop,
     out: handleCardRemoval
@@ -14,6 +14,10 @@ for ( var i=1; i<=10; i++ ) {
 for (var x=1; x<=10; x++) {
   $('<div id=card'+(x+10)+'></div>').appendTo( '#drop'+(x+10));
 }
+$('<div id=discardPile></div>').appendTo( '#remainingCards').droppable({
+  accept: '#p1-board div, #p2-board div, #remainingCards div',
+  drop: handleDiscard
+})
 
 let positionX = 0;
 let positionY = 0;
@@ -21,58 +25,58 @@ let positionY = 0;
 const hand = new Deck();
 
 async function startDeal() {
-  card1 = new Card("card1", await hand.deal());
-  card2 = new Card("card2", await hand.deal());
-  card3 = new Card("card3", await hand.deal());
-  card4 = new Card("card4", await hand.deal());
-  card5 = new Card("card5", await hand.deal());
-  card6 = new Card("card6", await hand.deal());
-  card7 = new Card("card7", await hand.deal());
-  card8 = new Card("card8", await hand.deal());
-  card9 = new Card("card9", await hand.deal());
-  card10 = new Card("card10", await hand.deal());
-  card11 = new Card("card11", await hand.deal());
-  card12 = new Card("card12", await hand.deal());
-  card13 = new Card("card13", await hand.deal());
-  card14 = new Card("card14", await hand.deal());
-  card15 = new Card("card15", await hand.deal());
-  card16 = new Card("card16", await hand.deal());
-  card17 = new Card("card17", await hand.deal());
-  card18 = new Card("card18", await hand.deal());
-  card19 = new Card("card19", await hand.deal());
-  card20 = new Card("card20", await hand.deal());
-  card21 = new Card("card21", await hand.deal());
-  card22 = new Card("card22", await hand.deal());
-  card23 = new Card("card23", await hand.deal());
-  card24 = new Card("card24", await hand.deal());
-  card25 = new Card("card25", await hand.deal());
-  card26 = new Card("card26", await hand.deal());
-  card27 = new Card("card27", await hand.deal());
-  card28 = new Card("card28", await hand.deal());
-  card29 = new Card("card29", await hand.deal());
-  card30 = new Card("card30", await hand.deal());
-  card31 = new Card("card31", await hand.deal());
-  card32 = new Card("card32", await hand.deal());
-  card33 = new Card("card33", await hand.deal());
-  card34 = new Card("card34", await hand.deal());
-  card35 = new Card("card35", await hand.deal());
-  card36 = new Card("card36", await hand.deal());
-  card37 = new Card("card37", await hand.deal());
-  card38 = new Card("card38", await hand.deal());
-  card39 = new Card("card39", await hand.deal());
-  card40 = new Card("card40", await hand.deal());
-  card41 = new Card("card41", await hand.deal());
-  card42 = new Card("card42", await hand.deal());
-  card43 = new Card("card43", await hand.deal());
-  card44 = new Card("card44", await hand.deal());
-  card45 = new Card("card45", await hand.deal());
-  card46 = new Card("card46", await hand.deal());
-  card47 = new Card("card47", await hand.deal());
-  card48 = new Card("card48", await hand.deal());
-  card49 = new Card("card49", await hand.deal());
-  card50 = new Card("card50", await hand.deal());
-  card51 = new Card("card51", await hand.deal());
-  card52 = new Card("card52", await hand.deal());
+  card1 = new Card("card1", await hand.deal(),1);
+  card2 = new Card("card2", await hand.deal(),1);
+  card3 = new Card("card3", await hand.deal(),1);
+  card4 = new Card("card4", await hand.deal(),1);
+  card5 = new Card("card5", await hand.deal(),1);
+  card6 = new Card("card6", await hand.deal(),1);
+  card7 = new Card("card7", await hand.deal(),1);
+  card8 = new Card("card8", await hand.deal(),1);
+  card9 = new Card("card9", await hand.deal(),1);
+  card10 = new Card("card10", await hand.deal(),1);
+  card11 = new Card("card11", await hand.deal(),2);
+  card12 = new Card("card12", await hand.deal(),2);
+  card13 = new Card("card13", await hand.deal(),2);
+  card14 = new Card("card14", await hand.deal(),2);
+  card15 = new Card("card15", await hand.deal(),2);
+  card16 = new Card("card16", await hand.deal(),2);
+  card17 = new Card("card17", await hand.deal(),2);
+  card18 = new Card("card18", await hand.deal(),2);
+  card19 = new Card("card19", await hand.deal(),2);
+  card20 = new Card("card20", await hand.deal(),2);
+  card21 = new Card("card21", await hand.deal(),3);
+  card22 = new Card("card22", await hand.deal(),3);
+  card23 = new Card("card23", await hand.deal(),3);
+  card24 = new Card("card24", await hand.deal(),3);
+  card25 = new Card("card25", await hand.deal(),3);
+  card26 = new Card("card26", await hand.deal(),3);
+  card27 = new Card("card27", await hand.deal(),3);
+  card28 = new Card("card28", await hand.deal(),3);
+  card29 = new Card("card29", await hand.deal(),3);
+  card30 = new Card("card30", await hand.deal(),3);
+  card31 = new Card("card31", await hand.deal(),3);
+  card32 = new Card("card32", await hand.deal(),3);
+  card33 = new Card("card33", await hand.deal(),3);
+  card34 = new Card("card34", await hand.deal(),3);
+  card35 = new Card("card35", await hand.deal(),3);
+  card36 = new Card("card36", await hand.deal(),3);
+  card37 = new Card("card37", await hand.deal(),3);
+  card38 = new Card("card38", await hand.deal(),3);
+  card39 = new Card("card39", await hand.deal(),3);
+  card40 = new Card("card40", await hand.deal(),3);
+  card41 = new Card("card41", await hand.deal(),3);
+  card42 = new Card("card42", await hand.deal(),3);
+  card43 = new Card("card43", await hand.deal(),3);
+  card44 = new Card("card44", await hand.deal(),3);
+  card45 = new Card("card45", await hand.deal(),3);
+  card46 = new Card("card46", await hand.deal(),3);
+  card47 = new Card("card47", await hand.deal(),3);
+  card48 = new Card("card48", await hand.deal(),3);
+  card49 = new Card("card49", await hand.deal(),3);
+  card50 = new Card("card50", await hand.deal(),3);
+  card51 = new Card("card51", await hand.deal(),3);
+  card52 = new Card("card52", await hand.deal(),3);
 
   card1.displayCard(false);
   card2.displayCard(false);

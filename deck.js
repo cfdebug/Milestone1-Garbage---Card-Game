@@ -49,7 +49,6 @@ class Deck {
         `http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=1`
       );
       let result = await response.json();
-      console.log(result);
       this.remaining = result.remaining;
       return [result.cards[0].value, result.cards[0].image];
     }

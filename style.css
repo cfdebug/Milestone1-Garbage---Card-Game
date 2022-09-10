@@ -91,7 +91,7 @@ BODY {
   box-sizing: border-box;
   position: relative;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
 }
 
 #computerlbl {
@@ -121,6 +121,7 @@ BODY {
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
+  margin:auto;
   position: absolute;
   bottom: 5px;
 }
@@ -131,7 +132,6 @@ BODY {
   min-width: 150px;
   max-width: 150px;
   height: 209px;
-  margin: auto;
   background-color: black;
   background-size: contain;
   border-radius: 10px;
@@ -140,12 +140,20 @@ BODY {
 }
 
 #remainingCards {
-  position: relative;
+  position: absolute;
   background-color: transparent;
   width: 150px;
   height: 209px;
   left: 46%;
   top: 40%;
+}
+
+#discardPile {
+  position: absolute;
+  right: 200px;
+  width: 150px;
+  height: 209px;
+  background-color: lightslategray;
 }
 
 #cardlbl {
