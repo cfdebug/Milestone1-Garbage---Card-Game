@@ -1,4 +1,5 @@
 var correctCards = 0;
+var prevCard;
 
 function handleCardDrop( event, ui ) {
     let slotNumber = $(this).data( 'number' );
@@ -21,12 +22,15 @@ function handleCardDrop( event, ui ) {
       ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
       ui.draggable.draggable( 'option', 'revert', false );
       currCard.style.bottom = '300px';
+      currCard.appendTo('#remainingCards')
+      $(this).append($(ui.draggable));
       correctCards++;
     } else if(cardNumber == '13'){
         ui.draggable.addClass( 'correct' );
         ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
         ui.draggable.draggable( 'option', 'revert', false ); 
         currCard.style.bottom = '300px';
+        $(this).append($(ui.draggable));
         correctCards++;
     }
     
@@ -55,16 +59,28 @@ function handleCardDrop( event, ui ) {
   }
 
   function handleDiscard( event, ui) {
-    console.log(ui.draggable)
-    let currCard = $(this)[0].firstElementChild;
-    console.log(currCard);
-    if(currCard != null){
-    currCard.draggable('disable');
-    ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-    ui.draggable.draggable( 'option', 'revert', false );
-  }else{   
-  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-  ui.draggable.draggable( 'option', 'revert', false );
+    if($(this)[0].childNodes.length >= 1){
+      console.log("Prev: "+prevCard)
+      prevCard.draggable('disable');
+      $(this).append($(ui.draggable));
+      prevCard = ui.draggable;
+      ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+      ui.draggable.draggable( 'option', 'revert', false );
+    }else{
+      $(this).append($(ui.draggable))
+      ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+      ui.draggable.draggable( 'option', 'revert', false );
+      prevCard = ui.draggable;
+    }
+  // }else{   
+  // ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+  // console.log(ui.draggable.position)
+  // ui.draggable.draggable( 'option', 'revert', false );
 
-  }
+  // }
 }
+
+  function handlePickDiscard(event, ui) {
+    // ui.draggable.appendTo('#remainingCards');
+    ui.draggable.draggable( 'option', 'revert', true );
+  }

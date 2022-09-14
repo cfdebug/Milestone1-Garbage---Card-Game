@@ -1,6 +1,6 @@
 class Deck {
     constructor() {
-      this.deck;
+      this.deck = [];
       this.deckID;
       this.remaining;
       this.init(startDeal);
@@ -26,19 +26,8 @@ class Deck {
         "http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
       );
       let result = await response.json();
-      this.deck = result;
       this.deckID = result.deck_id;
       this.remaining = result.remaining;
-    }
-  
-    shuffle() {
-      let numberOfCards = this.deck.length;
-      for (let x = 0; x < numberOfCards; x++) {
-        let j = Math.floor(Math.random() * numberOfCards);
-        let temp = this.deck[x];
-        this.deck[x] = this.deck[j];
-        this.deck[j] = temp;
-      }
     }
   
     async deal() {
@@ -46,10 +35,17 @@ class Deck {
       // let teststr = `http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=1`;
       // console.log('TEST: '+teststr);
       let response = await fetch(
-        `http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=1`
+        `http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=52`
       );
       let result = await response.json();
-      this.remaining = result.remaining;
+      // this.remaining = result.remaining;
+      result.cards.forEach(element => {
+        let jsonObj = {
+          "value": element.value,
+          "image": element.image
+        }
+        this.deck.push(jsonObj);
+      });
       return [result.cards[0].value, result.cards[0].image];
     }
   

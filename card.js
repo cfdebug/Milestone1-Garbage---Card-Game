@@ -1,37 +1,37 @@
 class Card {
     constructor(objName, card, board) {
-      if(card[0] == 'ACE'){
+      if(card.value == 'ACE'){
         this.card = 1;
-      }else if(card[0] == 'JACK'){
+      }else if(card.value == 'JACK'){
         this.card = 11;
-      }else if(card[0] == 'QUEEN'){
+      }else if(card.value == 'QUEEN'){
         this.card = 12;
-      }else if(card[0] == 'KING'){
+      }else if(card.value == 'KING'){
         this.card = 13;
       }else{
-        this.card = card[0];
+        this.card = card.value;
       };
-      this.img = card[1];
+      this.img = card.image;
       this.placeHolder = document.getElementById(objName);
 
       if(board == 1){
       $(`#${objName}`).data('value', this.card).draggable({
         containment: '#gameBoard',
-        stack: '#p1-board div',
+        stack: '.card',
         cursor: 'move',
         revert: true
       } );
       }else if (board == 2){
         $(`#${objName}`).data('value', this.card).draggable({
           containment: '#gameBoard',
-          stack: '#p2-board div',
+          stack: '.card',
           cursor: 'move',
           revert: true
         } );
       }else{
         $(`#${objName}`).data('value', this.card).draggable({
           containment: '#gameBoard',
-          stack: '#p1-board div,#p2-board div,#remainingCards div',
+          stack: '.card',
           cursor: 'move',
           revert: true
         } );
