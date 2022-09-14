@@ -136,7 +136,7 @@ BODY {
   background-size: contain;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 0px darkgray;
-  /* position:absolute; */
+  position:absolute;
 }
 
 #remainingCards {
@@ -160,6 +160,11 @@ BODY {
   justify-content: center;
   text-align: center;
   
+}
+
+.ui-droppable {
+  width: 150px;
+  height: 228px;
 }
 
 /* BUTTON {

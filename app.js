@@ -23,7 +23,16 @@ $('<div id=discardPile></div>').appendTo( '#remainingCards').droppable({
 let positionX = 0;
 let positionY = 0;
 
-const hand = new Deck();
+function startGame(){
+  $('#successMessage').hide();
+  $('#successMessage').css( {
+    left: '580px',
+    top: '250px',
+    width: 0,
+    height: 0
+  } );
+  correctCards = 0;
+}
 
 async function startDeal() {
   await hand.deal();
@@ -142,3 +151,6 @@ async function startDeal() {
   //     discarded.displayCard('discarded',false);
   //     toDraw.displayCard('toDraw',false);
 }
+
+startGame();
+const hand = new Deck();
