@@ -12,6 +12,7 @@ class Card {
         this.card = card.value;
       };
       this.img = card.image;
+      this.objName = objName;
       this.placeHolder = document.getElementById(objName);
 
       if(board == 1){
@@ -37,74 +38,85 @@ class Card {
         } );
       }
       this.flipped = false;
-      this.placeHolder.addEventListener("click", function () {
-        switch (objName) {
-          case "card1":
-            card1.flip();
-            break;
-          case "card2":
-            card2.flip();
-            break;
-          case "card3":
-            card3.flip();
-            break;
-          case "card4":
-            card4.flip();
-            break;
-          case "card5":
-            card5.flip();
-            break;
-          case "card6":
-            card6.flip();
-            break;
-          case "card7":
-            card7.flip();
-            break;
-          case "card8":
-            card8.flip();
-            break;
-          case "card9":
-            card9.flip();
-            break;
-          case "card10":
-            card10.flip();
-            break;
-          case "card11":
-            card11.flip();
-            break;
-          case "card12":
-            card12.flip();
-            break;
-          case "card13":
-            card13.flip();
-            break;
-          case "card14":
-            card14.flip();
-            break;
-          case "card15":
-            card15.flip();
-            break;
-          case "card16":
-            card16.flip();
-            break;
-          case "card17":
-            card17.flip();
-            break;
-          case "card18":
-            card18.flip();
-            break;
-          case "card19":
-            card19.flip();
-            break;
-          case "card20":
-            card20.flip();
-            break;
-          default:
-            hand.drawDeck(objName);
-        }
-      });
+
+      if(totalPlays <= 1){
+      this.placeHolder.addEventListener('click',function(){
+          switch (objName) {
+            case "card1":
+              card1.flip();
+              break;
+            case "card2":
+              card2.flip();
+              break;
+            case "card3":
+              card3.flip();
+              break;
+            case "card4":
+              card4.flip();
+              break;
+            case "card5":
+              card5.flip();
+              break;
+            case "card6":
+              card6.flip();
+              break;
+            case "card7":
+              card7.flip();
+              break;
+            case "card8":
+              card8.flip();
+              break;
+            case "card9":
+              card9.flip();
+              break;
+            case "card10":
+              card10.flip();
+              break;
+            case "card11":
+              card11.flip();
+              break;
+            case "card12":
+              card12.flip();
+              break;
+            case "card13":
+              card13.flip();
+              break;
+            case "card14":
+              card14.flip();
+              break;
+            case "card15":
+              card15.flip();
+              break;
+            case "card16":
+              card16.flip();
+              break;
+            case "card17":
+              card17.flip();
+              break;
+            case "card18":
+              card18.flip();
+              break;
+            case "card19":
+              card19.flip();
+              break;
+            case "card20":
+              card20.flip();
+              break;
+            default:
+              hand.drawDeck(objName);
+          }
+      })
     }
-  
+    }
+
+    addEvent(){
+      this.placeHolder.addEventListener('click',flipper(this.objName));
+    }
+
+    removeEvent(){
+      this.placeHolder.removeEventListener('click',flipper(this.objName));
+    }
+
     displayCard(flipped) {
       this.placeHolder.classList.add("card");
       this.flipped = flipped;
@@ -137,4 +149,4 @@ class Card {
         this.flipped = true;
       }
     }
-  }
+}

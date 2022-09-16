@@ -1,3 +1,8 @@
+let playerTurn;
+let totalPlays = 0;
+
+const hand = new Deck();
+
 for (x = 1; x < 53; x++) {
   eval("var card" + x);
 }
@@ -23,18 +28,8 @@ $('<div id=discardPile></div>').appendTo( '#remainingCards').droppable({
 let positionX = 0;
 let positionY = 0;
 
-function startGame(){
-  $('#successMessage').hide();
-  $('#successMessage').css( {
-    left: '580px',
-    top: '250px',
-    width: 0,
-    height: 0
-  } );
-  correctCards = 0;
-}
-
 async function startDeal() {
+  totalPlays += 1;
   await hand.deal();
   card1 = new Card("card1", hand.deck[0],1);
   card2 = new Card("card2", hand.deck[1],1);
@@ -142,15 +137,7 @@ async function startDeal() {
   card51.addToDeck();
   card52.addToDeck();
 
-  //     card4.displayCard('card4',true);
-  //     card5.displayCard('card5',true);
-  //     card6.displayCard('card6',true);
-  //     card7.displayCard('card7',true);
-  //     card8.displayCard('card8',true);
-  //     card9.displayCard('card9',true);
-  //     discarded.displayCard('discarded',false);
-  //     toDraw.displayCard('toDraw',false);
+  // for(x=1;x<=52;x++){
+  //   eval('card'+x+'.addEvent()');
+  // }
 }
-
-startGame();
-const hand = new Deck();

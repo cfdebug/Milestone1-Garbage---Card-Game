@@ -11,21 +11,23 @@
 </head>
 <body>
   <div id='gameBoard'>
-    <div id="successMessage"><h2>YOU WIN!!!</h2><button onclick="startGame()">Play Again?</button></div>
+    <div id="successMessage"><h1>YOU WIN!!!</h1><button onclick="hand.shuffle()">Play Again?</button></div>
+    <!-- <div id="userMessage">Player's Turn<button onclick="$('#userMessage').hide()"></button></div> -->
     <div id="p1-board">
-      <div id="cardlbl"><div id="card1"></div>TEN</div>
-      <div id="cardlbl"><div id="card2"></div>NINE</div>
-      <div id="cardlbl"><div id="card3"></div>EIGHT</div>
-      <div id="cardlbl"><div id="card4"></div>SEVEN</div>
-      <div id="cardlbl"><div id="card5"></div>SIX</div>
-      <div id="cardlbl"><div id="card6"></div>FIVE</div>
-      <div id="cardlbl"><div id="card7"></div>FOUR</div>
-      <div id="cardlbl"><div id="card8"></div>THREE</div>
-      <div id="cardlbl"><div id="card9"></div>TWO</div>
-      <div id="cardlbl"><div id="card10"></div>ACE</div>
-      <h2 id ='computerlbl'>Computer Oponent</h2>
+      <div id="cardlbl"><div id="card1"></div><h4 class="rotate">TEN</h4></div>
+      <div id="cardlbl"><div id="card2"></div><h4 class="rotate">NINE</h4></div>
+      <div id="cardlbl"><div id="card3"></div><h4 class="rotate">EIGHT</h4></div>
+      <div id="cardlbl"><div id="card4"></div><h4 class="rotate">SEVEN</h4></div>
+      <div id="cardlbl"><div id="card5"></div><h4 class="rotate">SIX</h4></div>
+      <div id="cardlbl"><div id="card6"></div><h4 class="rotate">FIVE</h4></div>
+      <div id="cardlbl"><div id="card7"></div><h4 class="rotate">FOUR</h4></div>
+      <div id="cardlbl"><div id="card8"></div><h4 class="rotate">THREE</h4></div>
+      <div id="cardlbl"><div id="card9"></div><h4 class="rotate">TWO</h4></div>
+      <div id="cardlbl"><div id="card10"></div><h4 class="rotate">ACE</h4></div>
+      <h2 id ='player2Lbl'>Player 2</h2>
       </div>
     <div id="remainingCards">
+      <h4 id="discardLbl">DISCARD</h4>
         <div id="card21"></div>
         <div id="card22"></div>
         <div id="card23"></div>
@@ -60,7 +62,7 @@
         <div id="card52"></div>
       </div>
     <div id="p2-board">
-        <h2 id='playerlbl'>Your Hand</h2>
+        <h2 id='player1Lbl'>Player 1</h2>
         <!-- <div class="ui-droppable">ACE<div id="card11"></div></div>
         <div class="ui-droppable">TWO<div id="card12"></div></div>
         <div class="ui-droppable">THREE<div id="card13"></div></div>
@@ -74,8 +76,9 @@
       </div>
     </div>
     <script src="deck.js" defer></script>
-    <script src="drop.js" defer></script>
+    <script src="actions.js" defer></script>
     <script src="card.js" defer></script>
+    <script src="layout.js" defer></script>
     <script src="app.js" defer></script>
 </body>
 </html>
