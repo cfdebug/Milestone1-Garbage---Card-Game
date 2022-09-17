@@ -1,3 +1,4 @@
+/* Background design for the Body is from https://www.101computing.net/poker-card-game-javascript/ */
 BODY {
   background-image: radial-gradient(
       circle at 29% 55%,
@@ -197,6 +198,7 @@ h4{
 
 #successMessage h1 , button{
   position: relative;
+  margin: 10px;
   top: 50vh;
 }
 

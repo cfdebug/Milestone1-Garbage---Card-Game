@@ -1,6 +1,9 @@
 function initLayout(){      
       var words = [ 'ACE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 'TEN' ];
       
+        $('<h2 id=player1Lbl>Player 1</h2>').appendTo('#p1-board');
+        $('<h2 id=player2Lbl>Player 2</h2>').appendTo('#p2-board');
+
       for ( y=1; y<=10; y++ ) {
         $('<div id=drop'+(y)+'><h4>' + words[y-1] + '</h4></div>').data( 'number', y ).appendTo( '#p1-board' ).droppable( {
           accept: '#p1-board div, #remainingCards div',

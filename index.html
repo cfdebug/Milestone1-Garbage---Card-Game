@@ -10,18 +10,16 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
-  <div id='gameBoard'>
-    <div id="successMessage"><h1 id="winMsg">YOU WIN!!!</h1><button onclick="resetLayout()">Play Again?</button></div>
-    <div id="p1-board">
-      <h2 id ='player1Lbl'>Player 1</h2>
-      </div>
-    <div id="remainingCards">
+  <main id='gameBoard'>
+    <div id="successMessage"><h1 id="winMsg">YOU WIN!!!</h1><button onclick="resetLayout()">Play Again?</button><button onclick="window.close()">Close</button></div>
+    <section id="p1-board">
+    </section>
+    <section id="remainingCards">
       <h4 id="discardLbl">DISCARD</h4>
-      </div>
-    <div id="p2-board">
-        <h2 id='player2Lbl'>Player 2</h2>
-      </div>
-    </div>
+    </section>
+    <section id="p2-board">
+    </section>
+    </main>
     <script src="deck.js" defer></script>
     <script src="actions.js" defer></script>
     <script src="card.js" defer></script>
