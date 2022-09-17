@@ -13,7 +13,7 @@ class Deck {
   
     async create() {
       let response = await fetch(
-        "http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+        "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
       );
       let result = await response.json();
       this.deckID = result.deck_id;
@@ -21,7 +21,7 @@ class Deck {
   
     async deal() {
       let response = await fetch(
-        `http://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=52`
+        `https://deckofcardsapi.com/api/deck/${this.deckID}/draw/?count=52`
       );
       let result = await response.json();
       result.cards.forEach(element => {
