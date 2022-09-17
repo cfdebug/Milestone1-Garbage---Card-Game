@@ -1,8 +1,13 @@
-function switchPlayers(){
-    $('#gameBoard').css('transform','rotate(180deg)')
-    // let test = document.getElementById('cardlbl');
-    // test
-    // console.log(test.childNodes);
-    // console.log(test.children);
-    $('.rotate').css('transform','rotate(180deg)')
+function player1Turn(){
+    $('#gameBoard').css('transform','rotate(0deg)');
+    $('#player1Lbl').css('transform','rotate(0deg)');
+    $('#player2Lbl').css('transform','rotate(0deg)');
+    $('h4').css('transform','rotate(0deg)');
+}
+
+function player2Turn(){
+    $('#gameBoard').css('transform','rotate(180deg)');
+    $('#player1Lbl').css('transform','rotate(180deg)');
+    $('#player2Lbl').css('transform','rotate(180deg)');
+    $('h4').css('transform','rotate(180deg)');
 }

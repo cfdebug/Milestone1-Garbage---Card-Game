@@ -109,14 +109,6 @@ class Card {
     }
     }
 
-    addEvent(){
-      this.placeHolder.addEventListener('click',flipper(this.objName));
-    }
-
-    removeEvent(){
-      this.placeHolder.removeEventListener('click',flipper(this.objName));
-    }
-
     displayCard(flipped) {
       this.placeHolder.classList.add("card");
       this.flipped = flipped;
