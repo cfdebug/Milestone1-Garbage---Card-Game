@@ -1,3 +1,4 @@
+// Initialize Layout
 function initLayout(){      
       var words = [ 'ACE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 'TEN' ];
       
@@ -36,7 +37,7 @@ function initLayout(){
         $('<div id=card'+(h)+'></div>').appendTo( '#remainingCards');
       }
 }
-
+// Clear Board for another round
 function resetLayout(){
     let p1 = document.getElementById('p1-board');
     p1.innerHTML = '';
@@ -49,7 +50,7 @@ function resetLayout(){
 
     hand.shuffle();
 }
-
+// Keep track of player turns
 function nextTurn(){
     if(playerTurn == 1){
         playerTurn = 2

@@ -3,15 +3,22 @@ let totalPlays = 0;
 let positionX = 0;
 let positionY = 0;
 
+// Define Card Variables
 for (x = 1; x < 53; x++) {
   eval("var card" + x);
 }
 
+// Create Deck
 const hand = new Deck();
+
+// Hide Success Message
 $('#successMessage').hide()
+
+// Watch for Winner
 setInterval(checkWinner,100);
 nextTurn();
 
+// Start Game
 async function startDeal() {
   initLayout();
   totalPlays += 1;
@@ -124,8 +131,4 @@ async function startDeal() {
   card50.addToDeck();
   card51.addToDeck();
   card52.addToDeck();
-
-  // for(x=1;x<=52;x++){
-  //   eval('card'+x+'.addEvent()');
-  // }
 }

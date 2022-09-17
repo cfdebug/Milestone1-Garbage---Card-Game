@@ -2,6 +2,7 @@ let correctCardsP1;
 let correctCardsP2;
 let prevCard;
 
+// Card was dropped Event
 function handleCardDrop( event, ui ) {
     let slotNumber = $(this).data( 'number' );
     let cardNumber = ui.draggable.data( 'value' );
@@ -42,6 +43,7 @@ function handleCardDrop( event, ui ) {
   
   }
 
+  // Card was discarded
   function handleDiscard( event, ui) {
     if($(this)[0].childNodes.length >= 1){
       console.log("Prev: "+prevCard)
@@ -58,15 +60,9 @@ function handleCardDrop( event, ui ) {
       prevCard = ui.draggable;
       nextTurn();
     }
-  // }else{   
-  // ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-  // console.log(ui.draggable.position)
-  // ui.draggable.draggable( 'option', 'revert', false );
-
-  // }
 }
 
+// Enable revert when Discard is picked up
   function handlePickDiscard(event, ui) {
-    // ui.draggable.appendTo('#remainingCards');
     ui.draggable.draggable( 'option', 'revert', true );
   }

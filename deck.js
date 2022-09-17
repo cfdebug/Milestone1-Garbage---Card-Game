@@ -1,3 +1,4 @@
+// Create Deck
 class Deck {
     constructor() {
       this.deck = [];
@@ -44,7 +45,5 @@ class Deck {
       positionX = 0;
       positionY = 0;
       await this.init(startDeal);
-      // resetLayout();
-
     }
   }

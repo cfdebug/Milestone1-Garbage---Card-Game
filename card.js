@@ -1,3 +1,4 @@
+// Create Card
 class Card {
     constructor(objName, card, board) {
       if(card.value == 'ACE'){
@@ -14,18 +15,12 @@ class Card {
       this.img = card.image;
       this.objName = objName;
       this.placeHolder = document.getElementById(objName);
-
+// Configure Draggable Object
       if(board == 1){
       $(`#${objName}`).data('value', this.card).draggable({
         containment: '#gameBoard',
         stack: '.card',
         cursor: 'move',
-        drag: function() {
-          if(playerTurn == 2){
-          $(".ui-draggable-dragging").css({
-            WebkitTransform: 'rotate(180deg)', '-moz-transform': 'rotate(180deg)'
-          })}
-        },
         revert: true
       } );
       }else if (board == 2){
@@ -33,12 +28,6 @@ class Card {
           containment: '#gameBoard',
           stack: '.card',
           cursor: 'move',
-          drag: function() {
-            if(playerTurn == 2){
-            $(".ui-draggable-dragging").css({
-              WebkitTransform: 'rotate(180deg)', '-moz-transform': 'rotate(180deg)'
-            })}
-          },
           revert: true
         } );
       }else{
@@ -46,17 +35,11 @@ class Card {
           containment: '#gameBoard',
           stack: '.card',
           cursor: 'move',
-          drag: function() {
-            if(playerTurn == 2){
-            $(".ui-draggable-dragging").css({
-              WebkitTransform: 'rotate(180deg)', '-moz-transform': 'rotate(180deg)'
-            })}
-          },
           revert: true
         } );
       }
       this.flipped = false;
-
+// Listen for Click
       this.placeHolder.addEventListener('click',function(){
           switch (objName) {
             case "card1":

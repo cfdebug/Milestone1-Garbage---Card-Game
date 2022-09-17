@@ -22,5 +22,7 @@ The goal is to place your cards in order from Ace(1) to 10. Jacks and Queens are
 
 * Create an automated opponent for Single Player mode.
 
+* Auto flip cards when a drawn card is placed on top
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

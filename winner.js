@@ -1,3 +1,4 @@
+// Keep track of who wins
 let cardCompareP1 = [false,false,false,false,false,false,false,false,false,false]
 let cardCompareP2 = [false,false,false,false,false,false,false,false,false,false]
 correctCardsP1 = [0,0,0,0,0,0,0,0,0,0];
