@@ -7,10 +7,6 @@ function handleCardDrop( event, ui ) {
     let slotNumber = $(this).data( 'number' );
     let cardNumber = ui.draggable.data( 'value' );
     let currCard = $(this)[0].childNodes[1]; 
-    console.log(slotNumber)
-    console.log(cardNumber)
-    console.log(currCard)
-    console.log(this)
 
     // If the card was dropped to the correct slot,
 
@@ -46,7 +42,6 @@ function handleCardDrop( event, ui ) {
   // Card was discarded
   function handleDiscard( event, ui) {
     if($(this)[0].childNodes.length >= 1){
-      console.log("Prev: "+prevCard)
       prevCard.draggable('disable');
       $(this).append($(ui.draggable));
       prevCard = ui.draggable;
