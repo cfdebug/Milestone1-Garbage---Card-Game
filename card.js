@@ -20,6 +20,12 @@ class Card {
         containment: '#gameBoard',
         stack: '.card',
         cursor: 'move',
+        drag: function() {
+          if(playerTurn == 2){
+          $(".ui-draggable-dragging").css({
+            WebkitTransform: 'rotate(180deg)', '-moz-transform': 'rotate(180deg)'
+          })}
+        },
         revert: true
       } );
       }else if (board == 2){
@@ -27,6 +33,12 @@ class Card {
           containment: '#gameBoard',
           stack: '.card',
           cursor: 'move',
+          drag: function() {
+            if(playerTurn == 2){
+            $(".ui-draggable-dragging").css({
+              WebkitTransform: 'rotate(180deg)', '-moz-transform': 'rotate(180deg)'
+            })}
+          },
           revert: true
         } );
       }else{
@@ -34,12 +46,17 @@ class Card {
           containment: '#gameBoard',
           stack: '.card',
           cursor: 'move',
+          drag: function() {
+            if(playerTurn == 2){
+            $(".ui-draggable-dragging").css({
+              WebkitTransform: 'rotate(180deg)', '-moz-transform': 'rotate(180deg)'
+            })}
+          },
           revert: true
         } );
       }
       this.flipped = false;
 
-      if(totalPlays <= 1){
       this.placeHolder.addEventListener('click',function(){
           switch (objName) {
             case "card1":
@@ -107,7 +124,6 @@ class Card {
           }
       })
     }
-    }
 
     displayCard(flipped) {
       this.placeHolder.classList.add("card");
@@ -121,7 +137,11 @@ class Card {
     }
   
     addToDeck() {
+      if (this.flipped){
+        this.flip();
+      };
       this.placeHolder.classList.add("card");
+      $('#remainingCards').append(this.placeHolder);
       this.placeHolder.style.backgroundImage =
         "url(https://deckofcardsapi.com/static/img/back.png)";
       this.placeHolder.style.position = "absolute";

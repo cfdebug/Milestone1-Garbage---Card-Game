@@ -1,11 +1,11 @@
-var correctCardsP1 = [0,0,0,0,0,0,0,0,0,0];
-var correctCardsP2 = [0,0,0,0,0,0,0,0,0,0];
-var prevCard;
+let correctCardsP1;
+let correctCardsP2;
+let prevCard;
 
 function handleCardDrop( event, ui ) {
     let slotNumber = $(this).data( 'number' );
     let cardNumber = ui.draggable.data( 'value' );
-    let currCard = $(this)[0].childNodes[1];
+    let currCard = $(this)[0].childNodes[1]; 
     console.log(slotNumber)
     console.log(cardNumber)
     console.log(currCard)
@@ -20,16 +20,24 @@ function handleCardDrop( event, ui ) {
       ui.draggable.draggable( 'disable' );
       $(this).droppable( 'disable' );
       $(this).append($(ui.draggable));
-      ui.draggable.position( { of: $(this), my: 'left bottom', at: 'left bottom',within: $(this) } );
+      ui.draggable.position( { of: $(this), my: 'left bottom', at: 'left bottom'} );
       ui.draggable.draggable( 'option', 'revert', false );
+      if (playerTurn == 1){
       correctCardsP1[slotNumber-1] = cardNumber;
+      }else if(playerTurn == 2){
+        correctCardsP2[slotNumber-1] = cardNumber; 
+      }
     } else if(cardNumber == '13'){
       $('#remainingCards').append(currCard);
       currCard.style.left = '300px';
       $(this).append($(ui.draggable));
-        ui.draggable.position( { of: $(this), my: 'left bottom', at: 'left bottom',within: $(this) } );
+        ui.draggable.position( { of: $(this), my: 'left bottom', at: 'left bottom'} );
         ui.draggable.draggable( 'option', 'revert', false ); 
-        correctCardsP1[slotNumber-1] = cardNumber;
+        if (playerTurn == 1){
+          correctCardsP1[slotNumber-1] = cardNumber;
+          }else if(playerTurn == 2){
+            correctCardsP2[slotNumber-1] = cardNumber; 
+          }
     }
   
   }
@@ -42,11 +50,13 @@ function handleCardDrop( event, ui ) {
       prevCard = ui.draggable;
       ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
       ui.draggable.draggable( 'option', 'revert', false );
+      nextTurn();
     }else{
       $(this).append($(ui.draggable))
       ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
       ui.draggable.draggable( 'option', 'revert', false );
       prevCard = ui.draggable;
+      nextTurn();
     }
   // }else{   
   // ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );

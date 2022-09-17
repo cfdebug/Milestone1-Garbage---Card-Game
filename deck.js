@@ -40,13 +40,11 @@ class Deck {
     }
 
     async shuffle(){
-      $('#successMessage').hide();
-      let response = await fetch(
-        `http://deckofcardsapi.com/api/deck/${this.deckID}/shuffle/`
-      );
-      let result = await response.json();
-      correctCards = 0;
       hand.deck = [];
-      startDeal();
+      positionX = 0;
+      positionY = 0;
+      await this.init(startDeal);
+      // resetLayout();
+
     }
   }

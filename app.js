@@ -2,46 +2,22 @@ let playerTurn;
 let totalPlays = 0;
 let positionX = 0;
 let positionY = 0;
-$('#successMessage').hide()
-setInterval(checkWinner,100);
-
-const hand = new Deck();
 
 for (x = 1; x < 53; x++) {
   eval("var card" + x);
 }
 
-var words = [ 'ACE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE', 'TEN' ];
-
-for ( var y=1; y<=10; y++ ) {
-  $('<div id=drop'+(y)+'></div>').data( 'number', 11-y ).appendTo( '#p1-board' ).droppable( {
-    accept: '#p1-board div, #remainingCards div',
-    hoverClass: 'hovered',
-    drop: handleCardDrop
-  } );
-}
-
-for ( var i=1; i<=10; i++ ) {
-  $('<div id=drop'+(i+10)+'><h4>' + words[i-1] + '</h4></div>').data( 'number', i ).appendTo( '#p2-board' ).droppable( {
-    accept: '#p2-board div, #remainingCards div',
-    hoverClass: 'hovered',
-    drop: handleCardDrop
-  } );
-}
-for (var x=1; x<=10; x++) {
-  $('<div id=card'+(x+10)+'></div>').appendTo( '#drop'+(x+10));
-}
-for (var z=1; z<=10; z++) {
-  $('<div id=card'+(z)+'></div><h4>'+words[10-z]+'</h4>').appendTo( '#drop'+(z));
-}
-$('<div id=discardPile></div>').appendTo( '#remainingCards').droppable({
-  accept: '#p1-board div, #p2-board div, #remainingCards div',
-  drop: handleDiscard,
-  out: handlePickDiscard
-})
+const hand = new Deck();
+$('#successMessage').hide()
+setInterval(checkWinner,100);
+nextTurn();
 
 async function startDeal() {
+  initLayout();
   totalPlays += 1;
+  correctCardsP1 = [0,0,0,0,0,0,0,0,0,0];
+  correctCardsP2 = [0,0,0,0,0,0,0,0,0,0];
+  $('#successMessage').hide()
   await hand.deal();
   card1 = new Card("card1", hand.deck[0],1);
   card2 = new Card("card2", hand.deck[1],1);

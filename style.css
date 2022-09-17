@@ -94,12 +94,12 @@ BODY {
   width: 100vw;
 }
 
-#player2Lbl {
+#player1Lbl {
   position: absolute;
   bottom: -60px;
 }
 
-#player1Lbl {
+#player2Lbl {
   position: absolute;
   top: -60px;
 }
@@ -136,7 +136,7 @@ BODY {
   background-size: contain;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 0px darkgray;
-  position:relative;
+  position:absolute;
 }
 
 #remainingCards {
