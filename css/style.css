@@ -1,0 +1,126 @@
+.card {
+  display: block;
+  box-sizing: border-box;
+  min-width: 150px;
+  max-width: 150px;
+  height: 209px;
+  background-color: black;
+  background-size: contain;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 0px rgb(169, 169, 169);
+  position: absolute;
+}
+
+#remainingCards {
+  position: absolute;
+  width: 150px;
+  height: 209px;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+  left: 51%;
+  top: 40%;
+}
+
+#discardPile {
+  position: absolute;
+  width: 150px;
+  height: 209px;
+  justify-content: center;
+  text-align: center;
+  right: 200px;
+  background-color: lightslategray;
+}
+
+#player2Lbl, #player1Lbl {
+  position: absolute;
+}
+
+#gameBoard {
+  box-sizing: border-box;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+#player1Lbl {
+  bottom: -60px;
+}
+
+#player2Lbl {
+  top: -60px;
+}
+
+#p1-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  bottom: 5px;
+  top: 10px;
+}
+
+#p2-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  bottom: 5px;
+  bottom: 10px;
+}
+
+#discardLbl {
+  position: inherit;
+  right: 235px;
+  bottom: 210px;
+}
+
+#cardlbl {
+  justify-content: center;
+  text-align: center;
+}
+
+BODY {
+  background-image: radial-gradient(circle at 29% 55%, hsla(329deg, 0%, 99%, 0.05) 0%, hsla(329deg, 0%, 99%, 0.05) 4%, transparent 4%, transparent 44%, transparent 44%, transparent 100%), radial-gradient(circle at 85% 89%, hsla(329deg, 0%, 99%, 0.05) 0%, hsla(329deg, 0%, 99%, 0.05) 51%, transparent 51%, transparent 52%, transparent 52%, transparent 100%), radial-gradient(circle at 6% 90%, hsla(329deg, 0%, 99%, 0.05) 0%, hsla(329deg, 0%, 99%, 0.05) 53%, transparent 53%, transparent 64%, transparent 64%, transparent 100%), radial-gradient(circle at 35% 75%, hsla(329deg, 0%, 99%, 0.05) 0%, hsla(329deg, 0%, 99%, 0.05) 6%, transparent 6%, transparent 98%, transparent 98%, transparent 100%), radial-gradient(circle at 56% 75%, hsla(329deg, 0%, 99%, 0.05) 0%, hsla(329deg, 0%, 99%, 0.05) 16%, transparent 16%, transparent 23%, transparent 23%, transparent 100%), radial-gradient(circle at 42% 0%, hsla(329deg, 0%, 99%, 0.05) 0%, hsla(329deg, 0%, 99%, 0.05) 3%, transparent 3%, transparent 26%, transparent 26%, transparent 100%), radial-gradient(circle at 29% 28%, hsla(329deg, 0%, 99%, 0.05) 0%, hsla(329deg, 0%, 99%, 0.05) 51%, transparent 51%, transparent 75%, transparent 75%, transparent 100%), radial-gradient(circle at 77% 21%, hsla(329deg, 0%, 99%, 0.05) 0%, hsla(329deg, 0%, 99%, 0.05) 35%, transparent 35%, transparent 55%, transparent 55%, transparent 100%), radial-gradient(circle at 65% 91%, hsla(329deg, 0%, 99%, 0.05) 0%, hsla(329deg, 0%, 99%, 0.05) 46%, transparent 46%, transparent 76%, transparent 76%, transparent 100%), linear-gradient(45deg, rgb(83, 91, 235), rgb(76, 11, 174));
+  min-height: 400px;
+  color: #dddddd;
+  font-family: verdana;
+  margin: 0;
+}
+BODY h4 {
+  margin: 0;
+  font-weight: 100;
+  text-align: center;
+}
+BODY .ui-droppable {
+  width: 150px;
+  height: 228px;
+}
+BODY .ui-draggable {
+  position: relative;
+}
+BODY #successMessage {
+  margin: 0;
+  z-index: 9000;
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  text-align: center;
+  background-color: black;
+}
+BODY #successMessage h1 {
+  position: relative;
+  margin: 10px;
+  top: 50vh;
+}
+BODY button {
+  position: relative;
+  margin: 10px;
+  top: 50vh;
+}/*# sourceMappingURL=style.css.map */

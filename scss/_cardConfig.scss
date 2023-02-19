@@ -1,0 +1,29 @@
+@import "config";
+@import "utilities";
+
+
+.card {
+	display: block;
+	box-sizing: border-box;
+	min-width: 150px;
+	max-width: 150px;
+	height: 209px;
+	background-color: $background-color_1;
+	background-size: contain;
+	border-radius: 10px;
+	box-shadow: 0px 0px 2px 0px $shadow-color_1;
+	position: absolute;
+}
+
+#remainingCards {
+	@include pile;
+	background-color: $background-color_2;
+	left: 51%;
+	top: 40%;
+}
+
+#discardPile {
+    @include pile;
+	right: 200px;
+	background-color: $background-color_3;
+}

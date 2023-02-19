@@ -1,0 +1,42 @@
+@import "utilities";
+
+%lbl {
+    position: absolute;
+}
+
+#gameBoard {
+	box-sizing: border-box;
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+    
+}
+    #player1Lbl {
+        @extend %lbl;
+        bottom: -60px;
+    }
+
+    #player2Lbl {
+        @extend %lbl;
+        top: -60px;
+    }
+
+    #p1-board {
+        @include board;
+        top: 10px;
+    }
+
+    #p2-board {
+        @include board;
+        bottom: 10px;
+    }
+
+    #discardLbl {
+        position: inherit;
+        right: 235px;
+        bottom: 210px;
+    }
+    #cardlbl {
+        justify-content: center;
+        text-align: center;
+    }

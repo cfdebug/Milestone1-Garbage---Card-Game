@@ -1,0 +1,44 @@
+@import "config";
+@import "cardConfig";
+@import "gameBoard";
+
+BODY {
+	background-image: radial-gradient( circle at 29% 55%, $background-color_4 0%, $background-color_4 4%, $background-color_2 4%, $background-color_2 44%, $background-color_2 44%, $background-color_2 100% ), radial-gradient( circle at 85% 89%, $background-color_4 0%, $background-color_4 51%, $background-color_2 51%, $background-color_2 52%, $background-color_2 52%, $background-color_2 100% ), radial-gradient( circle at 6% 90%, $background-color_4 0%, $background-color_4 53%, $background-color_2 53%, $background-color_2 64%, $background-color_2 64%, $background-color_2 100% ), radial-gradient( circle at 35% 75%, $background-color_4 0%, $background-color_4 6%, $background-color_2 6%, $background-color_2 98%, $background-color_2 98%, $background-color_2 100% ), radial-gradient( circle at 56% 75%, $background-color_4 0%, $background-color_4 16%, $background-color_2 16%, $background-color_2 23%, $background-color_2 23%, $background-color_2 100% ), radial-gradient( circle at 42% 0%, $background-color_4 0%, $background-color_4 3%, $background-color_2 3%, $background-color_2 26%, $background-color_2 26%, $background-color_2 100% ), radial-gradient( circle at 29% 28%, $background-color_4 0%, $background-color_4 51%, $background-color_2 51%, $background-color_2 75%, $background-color_2 75%, $background-color_2 100% ), radial-gradient( circle at 77% 21%, $background-color_4 0%, $background-color_4 35%, $background-color_2 35%, $background-color_2 55%, $background-color_2 55%, $background-color_2 100% ), radial-gradient( circle at 65% 91%, $background-color_4 0%, $background-color_4 46%, $background-color_2 46%, $background-color_2 76%, $background-color_2 76%, $background-color_2 100% ), linear-gradient(45deg, $background-color_5, $background-color_6);
+	min-height: 400px;
+	color: $color_1;
+	font-family: $font-family_1;
+	margin: 0;
+
+h4 {
+	margin: 0;
+	font-weight: 100;
+	text-align: center;
+}
+.ui-droppable {
+	width: 150px;
+	height: 228px;
+}
+.ui-draggable {
+	position: relative;
+}
+#successMessage {
+	margin: 0;
+	z-index: 9000;
+	position: absolute;
+	width: 0%;
+	height: 0%;
+	text-align: center;
+	background-color: $background-color_1;
+
+	h1 {
+		position: relative;
+		margin: 10px;
+		top: 50vh;
+	}
+}
+button {
+	position: relative;
+	margin: 10px;
+	top: 50vh;
+}
+}

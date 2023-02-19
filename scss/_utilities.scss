@@ -1,0 +1,18 @@
+@mixin board {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: auto;
+	position: absolute;
+	bottom: 5px;
+}
+
+@mixin pile {
+    position: absolute;
+	width: 150px;
+	height: 209px;
+	justify-content: center;
+	text-align: center; 
+}
